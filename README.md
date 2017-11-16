@@ -31,11 +31,6 @@ test project:
     - mysql:5.7
   before_script:
     - go version
-    - FIRSTGOPATH="$(go env GOPATH | cut -d':' -f1)"
-    - mkdir -p "${FIRSTGOPATH}/src/${REPO_DIR}"
-    - ln -s "${CI_PROJECT_DIR}" "${FIRSTGOPATH}/src/${REPO_DIR}/api"
-    - git config --global url."https://gitlab-ci-token:$CI_REGISTRY_TOKEN@git.iterium.co.uk/".insteadOf "https://git.iterium.co.uk/"
-    - cd "${FIRSTGOPATH}/src/${REPO_DIR}/api"
     - go get -t
   stage: test
   variables:
